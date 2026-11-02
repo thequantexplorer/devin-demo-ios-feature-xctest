@@ -16,10 +16,7 @@ final class ExpenseStore {
 
     /// Newest first. Expenses on the same day are ordered by title, A to Z.
     var expensesNewestFirst: [Expense] {
-        expenses.sorted { lhs, rhs in
-            if lhs.date != rhs.date { return lhs.date > rhs.date }
-            return lhs.title.localizedCaseInsensitiveCompare(rhs.title) == .orderedAscending
-        }
+        ExpenseSortOrder.newestFirst.sorted(expenses)
     }
 
     var total: Decimal {
